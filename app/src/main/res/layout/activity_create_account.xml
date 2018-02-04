@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    tools:context=".MainActivity">
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -120,22 +129,27 @@
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/museosans_300"
         android:minLines="4"
         android:text="Your password should have a minimum of 8 \n characters and contain at least one \n number, one uppercase and one lower \n case letter. You can use special characters."
         android:textColor="#ffffff"
         android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/btnNext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/eTRePassword"
+        app:layout_constraintVertical_bias="0.861" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnNext"
         android:layout_width="339dp"
         android:layout_height="45dp"
         android:layout_marginBottom="40dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:onClick="createAccount"
         android:background="@drawable/gradient_button_background2x"
         android:fontFamily="@font/museosans_300"
         android:text="Next"
@@ -159,3 +173,4 @@
         app:srcCompat="@drawable/tick2x" />
 
 </android.support.constraint.ConstraintLayout>
+</ScrollView>

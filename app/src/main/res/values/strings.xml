@@ -1,3 +1,18 @@
 <resources>
     <string name="app_name">AndroidEngineerExercise</string>
+
+    <string-array name="countries">
+        <item>Not-Specified</item>
+        <item>Malaysia</item>
+        <item>United States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+        <item>United Kingdom</item>
+    </string-array>
 </resources>
+
+
