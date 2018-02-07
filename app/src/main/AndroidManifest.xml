@@ -22,7 +22,8 @@
         </activity>
         <activity android:name=".CreateAccount" />
         <activity android:name=".UserDetails" />
-        <activity android:name=".DisplayUsers"></activity>
+        <activity android:name=".DisplayUsers" />
+        <activity android:name=".UserRecyclerView"></activity>
     </application>
 
 </manifest>

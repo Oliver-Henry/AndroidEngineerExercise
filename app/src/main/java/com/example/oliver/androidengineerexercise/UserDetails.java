@@ -10,6 +10,8 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 
+import com.codetroopers.betterpickers.datepicker.DatePickerBuilder;
+import com.codetroopers.betterpickers.datepicker.DatePickerDialogFragment;
 import com.example.oliver.androidengineerexercise.Model.UserModel;
 import com.example.oliver.androidengineerexercise.Util.Constants;
 import com.example.oliver.androidengineerexercise.controller.RealmBackupRestore;
@@ -18,7 +20,7 @@ import com.example.oliver.androidengineerexercise.controller.RealmHelper;
 
 import io.realm.Realm;
 
-public class UserDetails extends AppCompatActivity {
+public class UserDetails extends AppCompatActivity implements DatePickerDialogFragment.DatePickerDialogHandler {
     EditText nameText;
     EditText emailText;
     EditText passwordText;
@@ -26,6 +28,7 @@ public class UserDetails extends AppCompatActivity {
     EditText genderText;
     Spinner addressText;
     Button saveButton;
+    Button DOBButton;
     String username;
     String password;
 
@@ -47,7 +50,24 @@ public class UserDetails extends AppCompatActivity {
 
         realmBackupRestore = new RealmBackupRestore( this);
 
+        DOBButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatePickerBuilder dpb = new DatePickerBuilder()
+                        .setFragmentManager(getSupportFragmentManager())
+                        .setStyleResId(R.style.BetterPickersDialogFragment);
+                dpb.show();
+            }
+        });
+
     }
+
+    @Override
+    public void onDialogDateSet(int reference, int year, int monthOfYear, int dayOfMonth) {
+        ageText.setText( dayOfMonth + "-" + monthOfYear  + "-" + year);
+    }
+
+
     public void init(){
         nameText= findViewById(R.id.eTName);
         emailText= findViewById(R.id.eTUsername);
@@ -56,6 +76,7 @@ public class UserDetails extends AppCompatActivity {
         genderText= findViewById(R.id.eTGender);
         addressText= findViewById(R.id.spnAddress);
         saveButton= findViewById(R.id.btnSave);
+        DOBButton= findViewById(R.id.btnDOB);
     }
 
     public void initRealm(){
@@ -72,13 +93,16 @@ public class UserDetails extends AppCompatActivity {
         }
     }
 
+
+
     public void saveData(View view){
         UserModel userModel = new UserModel(nameText.getText().toString(), emailText.getText().toString(), passwordText.getText().toString(), ageText.getText().toString(), genderText.getText().toString(), addressText.getSelectedItem().toString());
         realmHelper.saveUser(userModel);
 
         realmBackupRestore.backup();
 
-        Intent intent = new Intent(UserDetails.this, DisplayUsers.class);
+        //Intent intent = new Intent(UserDetails.this, DisplayUsers.class);
+        Intent intent = new Intent(UserDetails.this, UserRecyclerView.class);
         startActivity(intent);
     }
 
